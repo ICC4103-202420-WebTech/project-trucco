@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  course: one
+  lesson: one
+  progress_percentage: 9.99
+  completed: false
+
+two:
+  user: two
+  course: two
+  lesson: two
+  progress_percentage: 9.99
+  completed: false
