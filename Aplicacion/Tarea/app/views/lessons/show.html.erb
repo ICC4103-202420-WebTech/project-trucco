@@ -1,15 +1,16 @@
 <div class="container mt-4">
   <h1><%= @lesson.title %></h1>
-
+  <p><strong>Content Type:</strong> <%= @lesson.content_type %></p>
+  
   <% if @lesson.content_type == "video" %>
-    <!-- If it's a video, embed the YouTube video -->
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="<%= @lesson.content %>" allowfullscreen></iframe>
+    <div class="video-container">
+      <h2>Watch Video</h2>
+      <%= link_to 'Watch Video', @lesson.content, target: '_blank', class: 'btn btn-primary' %>
     </div>
-  <% else %>
-    <!-- If it's written content, render the ActionText content -->
-    <div>
-      <%= @lesson.content_rich_text.body %>
-    </div>
+  <% elsif @lesson.content_type == "written" %>
+    <h2>Written Content</h2>
+    <%= @lesson.content_rich_text.body.to_s.html_safe %>
   <% end %>
+
+  <%= link_to 'Back to Course', course_path(@lesson.course), class: 'btn btn-secondary mt-3' %>
 </div>

@@ -1,6 +1,15 @@
 <div class="jumbotron text-center">
   <h1>Welcome to Assignment</h1>
   <p>Find the best courses and improve your skills!</p>
+
+  <% if user_signed_in? %>
+    <p>
+      Logged in as <%= current_user.name %>. 
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+    </p>
+  <% else %>
+    <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+  <% end %>
 </div>
 
 <div class="row">

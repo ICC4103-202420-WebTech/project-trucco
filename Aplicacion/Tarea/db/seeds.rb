@@ -2,7 +2,6 @@
 
 # Clear existing data to avoid duplicates
 Enrollment.delete_all
-Progress.delete_all
 Lesson.delete_all
 Course.delete_all
 User.delete_all
@@ -62,19 +61,16 @@ students = users.select { |user| user.role == 'student' }
 
 Course.all.each do |course|
   students.sample(3).each do |student|
-    Enrollment.create!(user: student, course: course)
+    # Add progress percentage and completed status in Enrollment
+    enrollment = Enrollment.create!(
+      user: student,
+      course: course,
+      progress_percentage: rand(0..100),
+      completed: false # default to incomplete
+    )
 
-    # Add some progress in the lessons
-    course.lessons.each do |lesson|
-      progress_percentage = rand(0..100)
-      Progress.create!(
-        user: student,
-        course: course,
-        lesson: lesson,
-        progress_percentage: progress_percentage,
-        completed: progress_percentage == 100
-      )
-    end
+    # Update completion status if progress is 100%
+    enrollment.update!(completed: true) if enrollment.progress_percentage == 100
   end
 end
 

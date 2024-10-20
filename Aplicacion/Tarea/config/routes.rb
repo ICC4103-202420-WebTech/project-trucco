@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "lessons/show"
   get "pages/home"
   get "courses/index"
+  resources :courses
+  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -15,7 +18,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'pages#home'
 
-  resources :courses, only: [:index, :show] do
-    resources :lessons, only: [:show]
+  resources :courses do
+    resources :lessons
   end
 end
