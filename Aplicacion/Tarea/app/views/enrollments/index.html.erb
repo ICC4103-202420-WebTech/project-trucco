@@ -1,0 +1,28 @@
+<h1>Enrollments for <%= @course.title %></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Progress (%)</th>
+      <th>Completed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.user.name %></td>
+        <td><%= enrollment.progress_percentage %></td>
+        <td><%= enrollment.completed ? 'Yes' : 'No' %></td>
+        <td>
+          <%= link_to 'Show', course_enrollment_path(@course, enrollment), class: 'btn btn-info' %>
+          <%= link_to 'Edit', edit_course_enrollment_path(@course, enrollment), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', course_enrollment_path(@course, enrollment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Enrollment', new_course_enrollment_path(@course), class: 'btn btn-success' %>

@@ -1,0 +1,9 @@
+<%= form_with(model: [@course, @forum], local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+    
+    <%= form.submit class: "btn btn-primary" %>
+  <% end %>
+  

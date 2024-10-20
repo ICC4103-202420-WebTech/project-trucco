@@ -1,0 +1,8 @@
+<h1>Enrollment Details</h1>
+
+<p><strong>Student:</strong> <%= @enrollment.user.name %></p>
+<p><strong>Progress (%):</strong> <%= @enrollment.progress_percentage %></p>
+<p><strong>Completed:</strong> <%= @enrollment.completed ? 'Yes' : 'No' %></p>
+
+<%= link_to 'Edit', edit_course_enrollment_path(@course, @enrollment), class: 'btn btn-primary' %>
+<%= link_to 'Back', course_enrollments_path(@course), class: 'btn btn-secondary' %>

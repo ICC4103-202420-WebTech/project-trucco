@@ -1,0 +1,17 @@
+<h1><%= @forum.title %></h1>
+<h2>Comments</h2>
+<% @forum.comments.each do |comment| %>
+  <div class="card mb-2">
+    <div class="card-body">
+      <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
+      <% if comment.user == current_user %>
+        <%= link_to 'Edit', edit_forum_comment_path(@forum, comment), class: "btn btn-warning btn-sm" %>
+        <%= link_to 'Delete', forum_comment_path(@forum, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= link_to 'New Comment', new_forum_comment_path(@forum), class: 'btn btn-primary' %>
+
+<%= link_to 'Edit Forum', edit_course_forum_path(@forum.course, @forum), class: 'btn btn-warning' %>
+<%= link_to 'Delete Forum', [@forum.course, @forum], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

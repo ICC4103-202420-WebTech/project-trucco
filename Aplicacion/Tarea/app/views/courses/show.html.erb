@@ -1,7 +1,10 @@
 <div class="container mt-4">
   <h1><%= @course.title %></h1>
   <p><%= @course.description %></p>
-
+  <ul>
+    <h3>Enrollment</h3>
+<%= link_to 'Enrollment', new_course_enrollment_path(@course), class: 'btn btn-primary' %>
+  </ul>
   <h2>Lessons</h2>
   <ul>
     <% @course.lessons.each do |lesson| %>
@@ -14,6 +17,13 @@
           <%= link_to 'Delete', course_lesson_path(@course, lesson), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
         <% end %>
       </li>
+    <% end %>
+  </ul>
+  <h2>Forums</h2>
+<%= link_to 'Create Forum', new_course_forum_path(@course), class: 'btn btn-primary' %>
+  <ul>
+    <% @course.forums.each do |forum| %>
+      <li><%= link_to forum.title, course_forum_path(@course, forum) %></li>
     <% end %>
   </ul>
 

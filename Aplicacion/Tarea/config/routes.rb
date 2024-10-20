@@ -20,5 +20,11 @@ Rails.application.routes.draw do
 
   resources :courses do
     resources :lessons
+    resources :forums
+    resources :enrollments
   end
+  resources :forums do
+    resources :comments
+  end
+  
 end

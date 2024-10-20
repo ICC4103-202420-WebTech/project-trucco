@@ -1,0 +1,8 @@
+<h1>Forums</h1>
+<%= link_to 'Create New Forum', new_course_forum_path(@course), class: 'btn btn-primary' %>
+
+<ul>
+  <% @forums.each do |forum| %>
+    <li><%= link_to forum.title, course_forum_path(forum.course, forum) %></li>
+  <% end %>
+</ul>
