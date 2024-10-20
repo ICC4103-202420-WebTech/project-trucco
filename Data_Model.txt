@@ -1,7 +1,6 @@
 User(PK: id, name, email, role)
 Course(PK: id, FK: instructor_id, title, description)
 Lesson(PK: id, FK: course_id, title, content_type, content)
-Enrollment(FK: user_id, FK: course_id)
+Enrollment(FK: user_id, FK: course_id, progress_percentage, completed)
 Forum(PK: id, FK: course_id, Title)
 Comment(PK: id, FK: forum_id, FK: user_id, content)
-Progress(PK: id, FK: user_id, FK: course_id, FK: lesson_id, progress_percentage, completed)
