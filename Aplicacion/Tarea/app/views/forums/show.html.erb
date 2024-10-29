@@ -14,4 +14,4 @@
 <%= link_to 'New Comment', new_forum_comment_path(@forum), class: 'btn btn-primary' %>
 
 <%= link_to 'Edit Forum', edit_course_forum_path(@forum.course, @forum), class: 'btn btn-warning' %>
-<%= link_to 'Delete Forum', [@forum.course, @forum], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= button_to 'Delete Forum', [@forum.course, @forum], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

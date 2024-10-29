@@ -3,7 +3,10 @@
 
   <!-- Add New Course Button -->
   <div class="mb-4">
-    <%= link_to 'Create New Course', new_course_path, class: 'btn btn-success' %>
+      <% if user_signed_in? %>
+        <%= link_to 'Create New Course', new_course_path, class: 'btn btn-success' %>
+    <% else %>
+    <% end %>
   </div>
 
   <!-- Flash message for feedback -->
@@ -31,9 +34,12 @@
               <p class="text-muted">Instructor: <%= course.instructor.name %></p>
 
               <!-- View, Edit, and Delete Buttons -->
-              <%= link_to 'View Course', course_path(course), class: 'btn btn-primary me-2' %>
-              <%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning me-2' %>
-              <%= link_to 'Delete', course_path(course), method: :delete, class: 'btn btn-danger' %>
+              <% if user_signed_in? %>
+                <%= link_to 'View Course', course_path(course), class: 'btn btn-primary me-2' %>
+                <%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning me-2' %>
+                <%= button_to 'Delete', course_path(course), method: :delete, class: 'btn btn-danger' %>
+            <% else %>
+            <% end %>
 
 
             </div>
