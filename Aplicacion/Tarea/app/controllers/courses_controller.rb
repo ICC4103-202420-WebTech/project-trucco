@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   before_action :authorize_course_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.all
+    @courses = Course.includes(:instructor)
   end
   def show
     @course = Course.find(params[:id])
