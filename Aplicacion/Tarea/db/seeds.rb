@@ -12,6 +12,7 @@ users = []
   users << User.create!(
     name: "Creator #{i + 1}",
     email: "creator#{i + 1}@example.com",
+    password: "password123",
     role: "instructor"
   )
 end
@@ -20,6 +21,7 @@ end
   users << User.create!(
     name: "Student #{i + 1}",
     email: "student#{i + 1}@example.com",
+    password: "password123",
     role: "student"
   )
 end
@@ -29,7 +31,7 @@ end
   course = Course.create!(
     title: "Course #{i + 1}",
     description: "This is the description for course #{i + 1}.",
-    instructor: users.sample { |user| user.role == 'instructor' }
+    instructor: users.select { |user| user.role == 'instructor' }.sample
   )
 
   4.times do |j|

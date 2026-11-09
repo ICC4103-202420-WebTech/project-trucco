@@ -5,10 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    has_many :instructed_courses, class_name: 'Course', foreign_key: 'instructor_id'
-    has_many :enrollments
+    has_many :instructed_courses, class_name: 'Course', foreign_key: 'instructor_id', dependent: :destroy
+    has_many :enrollments, dependent: :destroy
     has_many :enrolled_courses, through: :enrollments, source: :course
-    has_many :comments
+    has_many :comments, dependent: :destroy
 
     validates :name, :email, :role, presence: true
     private

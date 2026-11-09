@@ -12,11 +12,6 @@
       <%= form.text_area :description, class: 'form-control' %>
     </div>
 
-    <div class="mb-3">
-      <%= form.label :instructor_id %>
-      <%= form.collection_select :instructor_id, User.where(role: 'instructor'), :id, :name, prompt: 'Select Instructor', class: 'form-control' %>
-    </div>
-
     <%= form.submit 'Update Course', class: 'btn btn-primary' %>
   <% end %>
 
